@@ -57,7 +57,7 @@ void FileModifier::start() {
 
 void FileModifier::processFiles() {
     qDebug() << "Обработка файлов по маске:" << inputMask;
-    QDir dir("C:/Users/user/Desktop/XOR/XorOperation");
+    QDir dir("C:/Users/user/Desktop/XorOperation");
     dir.setNameFilters(QStringList() << inputMask);
     dir.setFilter(QDir::Files);
 
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]){
     FileModifier _xor;
     _xor.setInputMask("*.txt");
     _xor.setDeleteInputFiles(deleteInputFiles);
-    _xor.setOutputPath("C:/Users/user/Desktop/XOR/XorOperation/output");
+    _xor.setOutputPath("C:/Users/user/Desktop/XorOperation/output");
     _xor.setOverwriteOutput(overwrite);
     _xor.setPeriodicity(period);
     _xor.setRunOnce(false);
