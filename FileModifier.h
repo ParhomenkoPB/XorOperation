@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QByteArray>
 #include <QString>
+#include <memory>
+
 
 class FileModifier : public QObject {
     Q_OBJECT
@@ -17,25 +19,27 @@ public:
     explicit FileModifier(QObject* parent = nullptr);
 
 
-    void setInputMask(const QString& mask);
-    void setDeleteInputFiles(bool deleteInput);
-    void setOutputPath(const QString& path);
-    void setOverwriteOutput(bool overwrite);
-    void setPeriodicity(int ms);
-    void setBinaryValue(const QString& value);
-    void setRunOnce(bool runOnce);
-    void start();
-    void processFiles();
+         void setInputMask(const QString& mask);
+         void setDeleteInputFiles(bool deleteInput);
+         void setInputPath(const QString& inPath);
+         void setOutputPath(const QString& path);
+         void setOverwriteOutput(bool overwrite);
+         void setPeriodicity(int ms);
+         void setBinaryValue(const QString& value);
+         void setRunOnce(bool runOnce);
+         void start();
+         void processFiles();
 
 private:
-    bool isFileLocked(const QString& filePath);
+    bool _isFileLocked(const QString& filePath);
 
-    QString inputMask;
-    bool deleteInputFiles = false;
-    QString outputPath;
-    bool overwriteOutput = true;
-    int periodicity = 1000;
-    QByteArray binaryValue;
-    QTimer* timer;
-    bool runOnce = true;
+    QString m_inputMask;
+    QString m_inputPath;
+    bool m_deleteInputFiles;
+    QString m_outputPath;
+    bool m_overwriteOutput;
+    int m_periodicity;
+    QByteArray m_binaryValue;
+    QTimer* m_timer;
+    bool m_runOnce;
 };
